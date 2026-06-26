@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Calculator</title>
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
     <style>
         * { -webkit-tap-highlight-color: transparent !important; outline: none !important; box-sizing: border-box; }
         :root { --bg: #eef2ff; --panel: #ffffff; --text: #1e293b; --btn-gray: #e2e8f0; }
@@ -128,6 +127,17 @@
 <script>
     const display = document.getElementById('display');
     const API_KEY = '6591f34a3669760cf55931de';
+    
+    // Sound Initialization
+    const clickSound = new Audio('https://www.image2url.com/r2/default/audio/1782053996151-1b515acc-0dac-471b-b272-04f8048be389.mp3');
+
+    // Add sound to all buttons automatically
+    document.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(e => console.log("Audio play blocked by browser"));
+        });
+    });
 
     async function init() {
         try {
